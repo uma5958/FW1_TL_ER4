@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="FW1_TL_ER4 Application Test Automation Test Suite" parallel="methods" thread-count="4" >
+
+	<listeners>
+		<listener class-name="com.Listeners.MyTransformer" />
+		<!-- <listener class-name="com.Listeners.WebEventListener" /> -->
+	</listeners>
+
+	<test name="FW1_TL_ER4 App Test Cases - Chrome" >
+		<classes>
+			<class name="com.testcases.LoginPageTest"></class>
+			<!-- <class name="com.testcases.BuildPageTest"></class> 
+			<class name="com.testcases.CapturePageTest"></class> 
+			<class name="com.testcases.AnalysePageTest"></class> 
+			<class name="com.testcases.DashBoardPageTest"></class> 
+			<class name="com.testcases.SettingsPageTest"></class> -->
+		</classes>
+	</test>
+</suite>
