@@ -4,6 +4,7 @@
 
 package com.base;
 
+import static com.util.ActionUtil.clearBrowserCookies;
 import static com.util.ActionUtil.getCurrentDateAndTime;
 
 import java.io.FileInputStream;
@@ -22,11 +23,9 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
 
-import static com.util.ActionUtil.*;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
-import com.util.TestUtil;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -97,8 +96,8 @@ public class BasePage {
 		}
 
 		clearBrowserCookies();
-		getDriver().manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
-		getDriver().manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
+		getDriver().manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+		getDriver().manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
 		getDriver().get(prop.getProperty("url"));
 	}	

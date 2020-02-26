@@ -4,36 +4,22 @@
 
 package com.util;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Random;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 
-import com.base.BasePage;
-
-public class TestUtil extends BasePage {
-
-	public static long PAGE_LOAD_TIMEOUT = 60;
-	public static long IMPLICIT_WAIT = 30;
+public class TestUtil {
 
 	public static String TESTDATA_SHEET_PATH = "./src/main/java/com/testdata/NewiQaptureData.xlsx";
 
 	static Workbook book;
 	static Sheet sheet;
-
-	// Switch to Frame
-	public void switchToFrame(){
-		tldriver.get().switchTo().frame("mainpanel");
-	}
 
 	// Read particular cell data from Excel
 	public static String readCellData(String sheet, int row, int cell){
@@ -87,13 +73,6 @@ public class TestUtil extends BasePage {
 			}
 		}
 		return data;
-	}
-
-	// Screen shot code
-	public static void takeScreenshotAtEndOfTest() throws IOException {
-		File scrFile = ((TakesScreenshot) tldriver.get()).getScreenshotAs(OutputType.FILE);
-		String currentDir = System.getProperty("user.dir");
-		FileUtils.copyFile(scrFile, new File(currentDir + "/screenshots/" + System.currentTimeMillis() + ".png"));
 	}
 
 	// Get data from a given cell, generates random data and writes it to the same cell
