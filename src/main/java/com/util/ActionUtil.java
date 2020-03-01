@@ -1365,6 +1365,19 @@ public class ActionUtil {
 		JavascriptExecutor jse = (JavascriptExecutor)getDriver();
 		jse.executeScript("document.body.style.zoom = '"+zoom+"%';");
 	}
+	
+	public static void openNewBlankTab() {
+		((JavascriptExecutor) getDriver()).executeScript("window.open()");
+	}
+	
+	public static void openNewTabAndNavigateToGivenUrl(String url) {
+		((JavascriptExecutor) getDriver()).executeScript("window.open('"+url+"')");
+	}
+	
+	public static void openNewTabAndNavigateToGivenUrl2(String url) {
+		getDriver().findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL +"t");// open in new tab
+		getDriver().get(url);
+	}
 
 	// Ajax Utils================================================================================
 	public static <T> void ajaxJsClick(String elementName, T elementAttr){
